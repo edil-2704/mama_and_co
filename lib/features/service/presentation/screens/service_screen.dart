@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mama_and_co/features/service/presentation/screens/exam.dart';
 import 'package:mama_and_co/features/service/presentation/screens/service_category_screen.dart';
 import 'package:mama_and_co/features/service/presentation/widgets/common_article_card.dart';
 
@@ -49,7 +50,7 @@ class ServiceKnowledgeScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ServiceCategoryScreen(),
+                          builder: (context) => CategoryScreen(),
                         ),
                       );
                     },
@@ -61,7 +62,7 @@ class ServiceKnowledgeScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ServiceCategoryScreen(),
+                          builder: (context) => CategoryScreen(),
                         ),
                       );
                     },
@@ -73,7 +74,7 @@ class ServiceKnowledgeScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ServiceCategoryScreen(),
+                            builder: (context) => CategoryScreen(),
                           ),
                         );
                       })
