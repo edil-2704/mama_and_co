@@ -27,8 +27,8 @@ class CategoryScreen extends StatelessWidget {
           children: [
             Expanded(
               child: ListView(
-                children: [
-                  const BuildCategory(
+                children: const [
+                  BuildCategory(
                     title: 'Здоровье ребенка',
                     count: 30,
                     subCategories: [
@@ -66,7 +66,7 @@ class CategoryScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const BuildCategory(
+                  BuildCategory(
                     title: 'Первая помощь',
                     count: 19,
                     subCategories: [
@@ -76,14 +76,14 @@ class CategoryScreen extends StatelessWidget {
                       )
                     ],
                   ),
-                  const BuildCategory(
+                  BuildCategory(
                     title: 'Грудное и искусственное вскармливание',
                     count: 19,
                     subCategories: [
                       BuildSubCategory(
                         title: 'Чек-листы по здоровью',
                         count: 2,
-                      )
+                      ),
                     ],
                   ),
                 ],
