@@ -7,32 +7,103 @@ class CategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Категории', style: TextStyle(color: Colors.purple)),
-        centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {},
+          icon: Icon(Icons.arrow_back_ios_new),
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
-        backgroundColor: Colors.white,
-        elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black),
+        title: Text(
+          'Категории',
+          style: TextStyle(
+            color: Color(0xff4D4DE8),
+          ),
+        ),
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: ListView(
           children: [
-            buildCategory('Здоровье ребенка', 30, [
-              buildSubCategory('Чек-листы по здоровью', 2),
-              buildSubCategory('Сыпь: нормы и отклонения', 4),
-              buildSubCategory('Стул', 3),
-              buildSubCategory('ОРВИ', 4),
-              buildSubCategory('Прогулка с малышом', 2),
-              buildSubCategory('Витамины', 5),
-              buildSubCategory('Купание', 2),
-              buildSubCategory('Зубы', 3),
-              buildSubCategory('Массаж', 3),
-              buildSubCategory('Остеопатия', 2),
-            ]),
+            const BuildCategory(
+              title: 'Здоровье ребенка',
+              count: 30,
+              subCategories: [
+                BuildSubCategory(
+                  title: 'Чек-листы по здоровью',
+                  count: 2,
+                ),
+                BuildSubCategory(
+                  title: 'Стул',
+                  count: 2,
+                ),
+                BuildSubCategory(
+                  title: 'ОРВИ',
+                  count: 2,
+                ),
+                BuildSubCategory(
+                  title: 'Прогулка с малышом',
+                  count: 2,
+                ),
+                BuildSubCategory(
+                  title: 'Витамины',
+                  count: 2,
+                ),
+                BuildSubCategory(
+                  title: 'Зубы',
+                  count: 2,
+                ),
+                BuildSubCategory(
+                  title: 'Массаж',
+                  count: 2,
+                ),
+                BuildSubCategory(
+                  title: 'Остеопатия',
+                  count: 2,
+                ),
+              ],
+            ),
+            const BuildCategory(
+              title: 'Первая помощь',
+              count: 19,
+              subCategories: [
+                BuildSubCategory(
+                  title: 'Чек-листы по здоровью',
+                  count: 2,
+                )
+              ],
+            ),
+            const BuildCategory(
+              title: 'Грудное и искусственное вскармливание',
+              count: 19,
+              subCategories: [
+                BuildSubCategory(
+                  title: 'Чек-листы по здоровью',
+                  count: 2,
+                )
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  style: OutlinedButton.styleFrom(
+                      backgroundColor: Colors.grey[300],
+                      shape: RoundedRectangleBorder()),
+                  child: const Text('Очистить',
+                      style: TextStyle(color: Colors.grey)),
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  style: OutlinedButton.styleFrom(
+                      backgroundColor: Color(0xffE1E6FF),
+                      shape: RoundedRectangleBorder(),
+                      foregroundColor: Color(0xff4D4DE8)),
+                  child: Text('Подтвердить'),
+                ),
+              ],
+            ),
           ],
         ),
       ),
@@ -40,97 +111,113 @@ class CategoryScreen extends StatelessWidget {
   }
 }
 
-Widget buildCategory(String title, int count, List<Widget> subCategories) {
-  return ExpansionTile(
-    title: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(title, style: TextStyle(fontWeight: FontWeight.bold)),
-        Text(count.toString(), style: TextStyle(color: Colors.grey)),
-      ],
-    ),
-    children: subCategories,
-  );
+class BuildCategory extends StatefulWidget {
+  final String title;
+  final int count;
+  final List<Widget> subCategories;
+
+  const BuildCategory({
+    super.key,
+    required this.title,
+    required this.count,
+    required this.subCategories,
+  });
+
+  @override
+  State<BuildCategory> createState() => _BuildCategoryState();
 }
 
-Widget buildSubCategory(String title, int count) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(title),
-        Row(
+class _BuildCategoryState extends State<BuildCategory> {
+  bool isChecked = false;
+  @override
+  Widget build(BuildContext context) {
+    return Theme(
+      data: ThemeData().copyWith(dividerColor: Colors.transparent),
+      child: ExpansionTile(
+        iconColor: Color(0xff4D4DE8),
+        controlAffinity: ListTileControlAffinity.leading,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(count.toString(), style: TextStyle(color: Colors.grey)),
-            SizedBox(width: 16),
-            Checkbox(value: false, onChanged: (bool? value) {}),
+            Expanded(
+              flex: 10,
+              child: Text(
+                widget.title,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            Expanded(
+              child: Text(
+                widget.count.toString(),
+                style: TextStyle(color: Colors.grey),
+              ),
+            ),
+            Expanded(
+              child: CheckboxListTile(
+                value: isChecked,
+                onChanged: (bool? newValue) {
+                  setState(() {
+                    isChecked = newValue!;
+                  });
+                },
+                activeColor: Color(0xff4D4DE8),
+              ),
+            )
           ],
         ),
-      ],
-    ),
-  );
-}
-
-/// Flutter code sample for [ExpansionTile].
-
-class ExpansionTileApp extends StatelessWidget {
-  const ExpansionTileApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(useMaterial3: true),
-      home: Scaffold(
-        appBar: AppBar(title: const Text('ExpansionTile Sample')),
-        body: const ExpansionTileExample(),
+        children: widget.subCategories,
       ),
     );
   }
 }
 
-class ExpansionTileExample extends StatefulWidget {
-  const ExpansionTileExample({super.key});
+class BuildSubCategory extends StatefulWidget {
+  final String title;
+  final int count;
+
+  const BuildSubCategory({
+    super.key,
+    required this.title,
+    required this.count,
+  });
 
   @override
-  State<ExpansionTileExample> createState() => _ExpansionTileExampleState();
+  State<BuildSubCategory> createState() => _BuildSubCategoryState();
 }
 
-class _ExpansionTileExampleState extends State<ExpansionTileExample> {
-  bool _customTileExpanded = false;
+class _BuildSubCategoryState extends State<BuildSubCategory> {
+  bool isCheck = false;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        const ExpansionTile(
-          title: Text('ExpansionTile 1'),
-          subtitle: Text('Trailing expansion arrow icon'),
-          children: <Widget>[
-            ListTile(title: Text('This is tile number 1')),
-          ],
-        ),
-        ExpansionTile(
-          onExpansionChanged: (bool expanded) {
-            setState(() {
-              _customTileExpanded = expanded;
-            });
-          },
-          showTrailingIcon: false,
-          leading: Image.asset(
-            _customTileExpanded
-                ? 'assets/images/up.png'
-                : 'assets/images/down.png',
-            height: 18,
-            width: 18,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 14),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            widget.title,
+            style: TextStyle(fontSize: 17),
           ),
-          title: Text('ExpansionTile 3'),
-          subtitle: Text('Leading expansion arrow icon'),
-          children: <Widget>[
-            ListTile(title: Text('This is tile number 3')),
-          ],
-        ),
-      ],
+          Row(
+            children: [
+              Text(
+                widget.count.toString(),
+                style: TextStyle(color: Colors.grey, fontSize: 17),
+              ),
+              Checkbox(
+                  activeColor: Color(0xff4D4DE8),
+                  value: isCheck,
+                  onChanged: (bool? value) {
+                    setState(() {
+                      isCheck = value!;
+                    });
+                  }),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
