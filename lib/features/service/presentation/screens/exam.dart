@@ -23,65 +23,71 @@ class CategoryScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: ListView(
+        child: Column(
           children: [
-            const BuildCategory(
-              title: 'Здоровье ребенка',
-              count: 30,
-              subCategories: [
-                BuildSubCategory(
-                  title: 'Чек-листы по здоровью',
-                  count: 2,
-                ),
-                BuildSubCategory(
-                  title: 'Стул',
-                  count: 2,
-                ),
-                BuildSubCategory(
-                  title: 'ОРВИ',
-                  count: 2,
-                ),
-                BuildSubCategory(
-                  title: 'Прогулка с малышом',
-                  count: 2,
-                ),
-                BuildSubCategory(
-                  title: 'Витамины',
-                  count: 2,
-                ),
-                BuildSubCategory(
-                  title: 'Зубы',
-                  count: 2,
-                ),
-                BuildSubCategory(
-                  title: 'Массаж',
-                  count: 2,
-                ),
-                BuildSubCategory(
-                  title: 'Остеопатия',
-                  count: 2,
-                ),
-              ],
-            ),
-            const BuildCategory(
-              title: 'Первая помощь',
-              count: 19,
-              subCategories: [
-                BuildSubCategory(
-                  title: 'Чек-листы по здоровью',
-                  count: 2,
-                )
-              ],
-            ),
-            const BuildCategory(
-              title: 'Грудное и искусственное вскармливание',
-              count: 19,
-              subCategories: [
-                BuildSubCategory(
-                  title: 'Чек-листы по здоровью',
-                  count: 2,
-                )
-              ],
+            Expanded(
+              child: ListView(
+                children: [
+                  const BuildCategory(
+                    title: 'Здоровье ребенка',
+                    count: 30,
+                    subCategories: [
+                      BuildSubCategory(
+                        title: 'Чек-листы по здоровью',
+                        count: 2,
+                      ),
+                      BuildSubCategory(
+                        title: 'Стул',
+                        count: 2,
+                      ),
+                      BuildSubCategory(
+                        title: 'ОРВИ',
+                        count: 2,
+                      ),
+                      BuildSubCategory(
+                        title: 'Прогулка с малышом',
+                        count: 2,
+                      ),
+                      BuildSubCategory(
+                        title: 'Витамины',
+                        count: 2,
+                      ),
+                      BuildSubCategory(
+                        title: 'Зубы',
+                        count: 2,
+                      ),
+                      BuildSubCategory(
+                        title: 'Массаж',
+                        count: 2,
+                      ),
+                      BuildSubCategory(
+                        title: 'Остеопатия',
+                        count: 2,
+                      ),
+                    ],
+                  ),
+                  const BuildCategory(
+                    title: 'Первая помощь',
+                    count: 19,
+                    subCategories: [
+                      BuildSubCategory(
+                        title: 'Чек-листы по здоровью',
+                        count: 2,
+                      )
+                    ],
+                  ),
+                  const BuildCategory(
+                    title: 'Грудное и искусственное вскармливание',
+                    count: 19,
+                    subCategories: [
+                      BuildSubCategory(
+                        title: 'Чек-листы по здоровью',
+                        count: 2,
+                      )
+                    ],
+                  ),
+                ],
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
