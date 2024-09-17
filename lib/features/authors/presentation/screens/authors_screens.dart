@@ -1,25 +1,36 @@
 import 'package:flutter/material.dart';
 
-class CategoryScreen extends StatelessWidget {
-  const CategoryScreen({super.key});
+class AuthorsScreen extends StatelessWidget {
+  const AuthorsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        centerTitle: true,
         title: Text(
-          'Категории',
+          'Автор',
           style: TextStyle(
             color: Color(0xff4D4DE8),
           ),
         ),
-        centerTitle: true,
+        leading: Row(
+          children: [
+            IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(Icons.arrow_back_ios_new),
+            ),
+            // Text('Назад'),
+          ],
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Image.asset('assets/images/save.png'),
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -29,7 +40,7 @@ class CategoryScreen extends StatelessWidget {
               child: ListView(
                 children: const [
                   BuildCategory(
-                    title: 'Здоровье ребенка',
+                    title: 'Специалисты',
                     count: 30,
                     subCategories: [
                       BuildSubCategory(
@@ -220,26 +231,29 @@ class BuildSubCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 14),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        CircleAvatar(
+          backgroundImage: AssetImage('assets/images/img.png'),
+        ),
+        SizedBox(width: 10),
+        Expanded(
+          child: Text(
             title,
             style: TextStyle(fontSize: 17),
           ),
-          Row(
-            children: [
-              Text(
-                count.toString(),
-                style: TextStyle(color: Colors.grey, fontSize: 17),
-              ),
-              CommonCheckBox(),
-            ],
-          ),
-        ],
-      ),
+        ),
+        Row(
+          children: [
+            Text(
+              count.toString(),
+              style: TextStyle(color: Colors.grey, fontSize: 17),
+            ),
+            CommonCheckBox(),
+          ],
+        ),
+      ],
     );
   }
 }

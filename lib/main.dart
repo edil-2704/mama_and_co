@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mama_and_co/features/authors/presentation/screens/authors_screens.dart';
 import 'package:mama_and_co/features/service/presentation/screens/exam.dart';
-import 'package:mama_and_co/features/service/presentation/screens/service_info_screen.dart';
 import 'package:mama_and_co/features/service/presentation/screens/service_screen.dart';
 
 void main() {
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: ServiceKnowledgeScreen(),
+      home: AuthorsScreen(),
     );
   }
 }

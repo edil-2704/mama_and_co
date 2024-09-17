@@ -279,7 +279,7 @@ class CommonHorizontalWidget extends StatelessWidget {
           );
         },
         separatorBuilder: (BuildContext context, int index) {
-          return SizedBox(width: 15);
+          return const SizedBox(width: 15);
         },
       ),
     );
