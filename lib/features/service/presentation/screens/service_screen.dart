@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mama_and_co/features/authors/presentation/screens/authors_screens.dart';
 import 'package:mama_and_co/features/service/presentation/screens/exam.dart';
 import 'package:mama_and_co/features/service/presentation/widgets/common_article_card.dart';
 
@@ -73,7 +74,7 @@ class ServiceKnowledgeScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => CategoryScreen(),
+                            builder: (context) => AuthorsScreen(),
                           ),
                         );
                       })
