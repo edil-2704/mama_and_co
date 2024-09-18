@@ -18,12 +18,12 @@ class ServiceKnowledgeScreen extends StatelessWidget {
           ),
         ),
         leading: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            IconButton(
+            BackButton(
               onPressed: () {},
-              icon: Icon(Icons.arrow_back_ios_new),
             ),
-            Text('Назад', overflow: TextOverflow.ellipsis),
+            Text('Назад'),
           ],
         ),
         actions: [
