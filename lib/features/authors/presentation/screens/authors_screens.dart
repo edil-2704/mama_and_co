@@ -238,12 +238,32 @@ class BuildSubCategory extends StatelessWidget {
           backgroundImage: AssetImage('assets/images/img.png'),
         ),
         SizedBox(width: 10),
-        Expanded(
-          child: Text(
-            title,
-            style: TextStyle(fontSize: 17),
+        Flexible(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: TextStyle(fontSize: 17),
+              ),
+              SizedBox(width: 3),
+              Container(
+                alignment: Alignment.center,
+                height: 12,
+                width: 40,
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: Text(
+                  'data',
+                  style: TextStyle(fontSize: 10),
+                ),
+              ),
+            ],
           ),
         ),
+        SizedBox(width: 40),
         Row(
           children: [
             Text(
