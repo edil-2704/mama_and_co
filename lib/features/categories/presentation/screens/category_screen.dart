@@ -124,7 +124,7 @@ class CategoryScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(8),
                             ),
                             foregroundColor: Color(0xff4D4DE8)),
-                        child: Text('Подтвердить'),
+                        child: const Text('Подтвердить'),
                       ),
                     ),
                   ],
