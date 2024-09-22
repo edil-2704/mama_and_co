@@ -155,7 +155,7 @@ class BuildCategory extends StatelessWidget {
     return Theme(
       data: ThemeData().copyWith(dividerColor: Colors.transparent),
       child: ExpansionTile(
-        iconColor: Color(0xff4D4DE8),
+        iconColor: const Color(0xff4D4DE8),
         controlAffinity: ListTileControlAffinity.leading,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
