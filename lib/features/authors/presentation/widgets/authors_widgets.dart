@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class AuthorsSub extends StatelessWidget {
@@ -89,7 +88,7 @@ class SchoolSub extends StatelessWidget {
                 title,
                 style: TextStyle(fontSize: 17),
               ),
-              SizedBox(width: 3),
+              const SizedBox(width: 3),
             ],
           ),
         ),

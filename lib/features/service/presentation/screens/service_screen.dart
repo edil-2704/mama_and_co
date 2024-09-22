@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mama_and_co/features/ages/presentation/screens/ages_screen.dart';
 import 'package:mama_and_co/features/authors/presentation/screens/authors_screens.dart';
-import 'package:mama_and_co/features/service/presentation/screens/category_screen.dart';
+import 'package:mama_and_co/features/categories/presentation/screens/category_screen.dart';
+import 'package:mama_and_co/features/saved_files/presentation/screens/saved_files_screen.dart';
 import 'package:mama_and_co/features/service/presentation/widgets/common_article_card.dart';
 
 class ServiceKnowledgeScreen extends StatelessWidget {
@@ -28,7 +30,14 @@ class ServiceKnowledgeScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SavedFilesScreen(),
+                ),
+              );
+            },
             icon: Image.asset('assets/images/save.png'),
           ),
         ],
@@ -62,7 +71,7 @@ class ServiceKnowledgeScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => CategoryScreen(),
+                          builder: (context) => AgesScreen(),
                         ),
                       );
                     },
