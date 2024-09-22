@@ -237,7 +237,7 @@ class BuildSubCategory extends StatelessWidget {
                 count.toString(),
                 style: TextStyle(color: Colors.grey, fontSize: 17),
               ),
-              CommonCheckBox(),
+              const CommonCheckBox(),
             ],
           ),
         ],
