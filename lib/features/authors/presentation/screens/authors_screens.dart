@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mama_and_co/features/authors/presentation/widgets/authors_widgets.dart';
 
 class AuthorsScreen extends StatelessWidget {
   const AuthorsScreen({super.key});
@@ -39,60 +40,86 @@ class AuthorsScreen extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: const [
-                  BuildCategory(
+                  Authors(
                     title: 'Специалисты',
                     count: 30,
                     subCategories: [
-                      BuildSubCategory(
+                      AuthorsSub(
                         title: 'Чек-листы по здоровью',
                         count: 2,
+                        titleAuthor: 'Акушер',
                       ),
-                      BuildSubCategory(
+                      AuthorsSub(
                         title: 'Стул',
                         count: 2,
+                        titleAuthor: 'Акушер',
                       ),
-                      BuildSubCategory(
+                      AuthorsSub(
                         title: 'ОРВИ',
                         count: 2,
+                        titleAuthor: 'Акушер',
                       ),
-                      BuildSubCategory(
+                      AuthorsSub(
                         title: 'Прогулка с малышом',
                         count: 2,
+                        titleAuthor: 'Акушер',
                       ),
-                      BuildSubCategory(
+                      AuthorsSub(
                         title: 'Витамины',
                         count: 2,
+                        titleAuthor: 'Акушер',
                       ),
-                      BuildSubCategory(
+                      AuthorsSub(
                         title: 'Зубы',
                         count: 2,
+                        titleAuthor: 'Акушер',
                       ),
-                      BuildSubCategory(
+                      AuthorsSub(
                         title: 'Массаж',
                         count: 2,
+                        titleAuthor: 'Акушер',
                       ),
-                      BuildSubCategory(
+                      AuthorsSub(
                         title: 'Остеопатия',
                         count: 2,
+                        titleAuthor: 'Акушер',
                       ),
                     ],
                   ),
-                  BuildCategory(
-                    title: 'Первая помощь',
-                    count: 19,
+                  Authors(
+                    title: 'Онлайн-школы',
+                    count: 45,
                     subCategories: [
-                      BuildSubCategory(
-                        title: 'Чек-листы по здоровью',
+                      SchoolSub(
+                        title: 'Мамино счастье',
                         count: 2,
-                      )
-                    ],
-                  ),
-                  BuildCategory(
-                    title: 'Грудное и искусственное вскармливание',
-                    count: 19,
-                    subCategories: [
-                      BuildSubCategory(
-                        title: 'Чек-листы по здоровью',
+                      ),
+                      SchoolSub(
+                        title: 'Мамино счастье',
+                        count: 2,
+                      ),
+                      SchoolSub(
+                        title: 'Мамино счастье',
+                        count: 2,
+                      ),
+                      SchoolSub(
+                        title: 'Мамино счастье',
+                        count: 2,
+                      ),
+                      SchoolSub(
+                        title: 'Мамино счастье',
+                        count: 2,
+                      ),
+                      SchoolSub(
+                        title: 'Мамино счастье',
+                        count: 2,
+                      ),
+                      SchoolSub(
+                        title: 'Мамино счастье',
+                        count: 2,
+                      ),
+                      SchoolSub(
+                        title: 'Мамино счастье',
                         count: 2,
                       ),
                     ],
@@ -147,12 +174,12 @@ class AuthorsScreen extends StatelessWidget {
   }
 }
 
-class BuildCategory extends StatelessWidget {
+class Authors extends StatelessWidget {
   final String title;
   final int count;
   final List<Widget> subCategories;
 
-  const BuildCategory({
+  const Authors({
     super.key,
     required this.title,
     required this.count,
@@ -164,6 +191,7 @@ class BuildCategory extends StatelessWidget {
     return Theme(
       data: ThemeData().copyWith(dividerColor: Colors.transparent),
       child: ExpansionTile(
+        collapsedIconColor: Color(0xff4D4DE8),
         iconColor: Color(0xff4D4DE8),
         controlAffinity: ListTileControlAffinity.leading,
         title: Row(
@@ -191,113 +219,5 @@ class BuildCategory extends StatelessWidget {
         children: subCategories,
       ),
     );
-  }
-}
-
-class CommonCheckBoxWidget extends StatefulWidget {
-  const CommonCheckBoxWidget({
-    super.key,
-  });
-
-  @override
-  State<CommonCheckBoxWidget> createState() => _CommonCheckBoxWidgetState();
-}
-
-class _CommonCheckBoxWidgetState extends State<CommonCheckBoxWidget> {
-  bool isChecked = false;
-  @override
-  Widget build(BuildContext context) {
-    return Checkbox(
-      value: isChecked,
-      activeColor: Color(0xff4D4DE8),
-      onChanged: (bool? value) {
-        setState(() {
-          isChecked = value!;
-        });
-      },
-    );
-  }
-}
-
-class BuildSubCategory extends StatelessWidget {
-  final String title;
-  final int count;
-
-  const BuildSubCategory({
-    super.key,
-    required this.title,
-    required this.count,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        CircleAvatar(
-          backgroundImage: AssetImage('assets/images/img.png'),
-        ),
-        SizedBox(width: 10),
-        Flexible(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: TextStyle(fontSize: 17),
-              ),
-              SizedBox(width: 3),
-              Container(
-                alignment: Alignment.center,
-                height: 12,
-                width: 40,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: Text(
-                  'data',
-                  style: TextStyle(fontSize: 10),
-                ),
-              ),
-            ],
-          ),
-        ),
-        SizedBox(width: 40),
-        Row(
-          children: [
-            Text(
-              count.toString(),
-              style: TextStyle(color: Colors.grey, fontSize: 17),
-            ),
-            CommonCheckBox(),
-          ],
-        ),
-      ],
-    );
-  }
-}
-
-class CommonCheckBox extends StatefulWidget {
-  const CommonCheckBox({
-    super.key,
-  });
-
-  @override
-  State<CommonCheckBox> createState() => _CommonCheckBoxState();
-}
-
-class _CommonCheckBoxState extends State<CommonCheckBox> {
-  bool firstValue = false;
-  @override
-  Widget build(BuildContext context) {
-    return Checkbox(
-        activeColor: Color(0xff4D4DE8),
-        value: firstValue,
-        onChanged: (bool? value) {
-          setState(() {
-            firstValue = value!;
-          });
-        });
   }
 }
